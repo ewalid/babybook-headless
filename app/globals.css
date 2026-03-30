@@ -1,26 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-surface: #fbf9f4;
+  --color-surface-bright: #fbf9f4;
+  --color-surface-dim: #dbdad5;
+  --color-surface-variant: #e4e2dd;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f5f3ee;
+  --color-surface-container: #f0eee9;
+  --color-surface-container-high: #eae8e3;
+  --color-surface-container-highest: #e4e2dd;
+  --color-on-surface: #1b1c19;
+  --color-on-surface-variant: #434842;
+  --color-background: #fbf9f4;
+  --color-on-background: #1b1c19;
+  --color-primary: #516051;
+  --color-primary-container: #697969;
+  --color-primary-fixed: #d6e7d4;
+  --color-primary-fixed-dim: #bacbb8;
+  --color-on-primary: #ffffff;
+  --color-on-primary-fixed: #111f13;
+  --color-on-primary-fixed-variant: #3c4a3c;
+  --color-inverse-primary: #bacbb8;
+  --color-secondary: #835247;
+  --color-secondary-container: #fdbdae;
+  --color-secondary-fixed: #ffdad2;
+  --color-secondary-fixed-dim: #f7b7a9;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-fixed: #331109;
+  --color-on-secondary-fixed-variant: #673b31;
+  --color-on-secondary-container: #794a3f;
+  --color-tertiary: #7b5500;
+  --color-tertiary-container: #976d1b;
+  --color-tertiary-fixed: #ffdeab;
+  --color-tertiary-fixed-dim: #f2be65;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-fixed: #281900;
+  --color-on-tertiary-fixed-variant: #5f4100;
+  --color-on-tertiary-container: #fffbff;
+  --color-outline: #747872;
+  --color-outline-variant: #c4c8c0;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --font-headline: 'Newsreader', serif;
+  --font-body: 'Manrope', sans-serif;
+  --font-label: 'Manrope', sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --radius: 0.125rem;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fbf9f4;
+  color: #1b1c19;
+  font-family: 'Manrope', sans-serif;
 }
+
+.drop-cap::first-letter {
+  float: left;
+  font-family: 'Newsreader', serif;
+  font-size: 5rem;
+  line-height: 0.8;
+  padding-top: 0.5rem;
+  padding-right: 0.75rem;
+  color: #516051;
+  font-style: italic;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
