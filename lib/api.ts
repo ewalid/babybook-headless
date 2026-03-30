@@ -47,6 +47,16 @@ export type Book = {
   }
 }
 
+function normaliseBook(story: Book): Book {
+  const images = story.content?.images
+  if (images && !Array.isArray(images)) {
+    story.content.images = (images as unknown as { filename?: string }).filename
+      ? [images as unknown as { filename: string; alt: string }]
+      : []
+  }
+  return story
+}
+
 export async function getBooks(): Promise<Book[]> {
   const res = await fetch(
     `${BASE}/stories?token=${TOKEN}&version=published&starts_with=pages/books/&per_page=25&sort_by=created_at:asc`,
@@ -54,7 +64,7 @@ export async function getBooks(): Promise<Book[]> {
   )
   if (!res.ok) return []
   const data = await res.json()
-  return (data.stories ?? []).filter((s: Book) => s.slug !== 'books')
+  return (data.stories ?? []).filter((s: Book) => s.slug !== 'books').map(normaliseBook)
 }
 
 export async function getBook(slug: string): Promise<Book | null> {
@@ -64,7 +74,7 @@ export async function getBook(slug: string): Promise<Book | null> {
   )
   if (!res.ok) return null
   const data = await res.json()
-  return data.story ?? null
+  return data.story ? normaliseBook(data.story) : null
 }
 
 export function richTextToPlainText(doc: { type: string; content?: unknown[] } | undefined): string {
